@@ -6,8 +6,8 @@ const { connectMySQL, getPool } = require('./database');
 const config = require('./config');
 
 // Usamos o mqttClient e os utils da raiz para publicar no mesmo padrão do handlers.js
-const { connectMQTT, getMQTT } = require('../mqttClient');
-const { getTopicsByBranch } = require('../utils');
+const { connectMQTT, getMQTT } = require('./mqttClient');
+const { getTopicsByBranch } = require('./utils');
 
 const url =
   (config.scraper && config.scraper.url)
