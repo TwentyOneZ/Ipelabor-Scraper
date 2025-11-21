@@ -6,14 +6,24 @@ const logger = require('./logger');
 let pool;
 
 async function connectMySQL() {
+    const host = config.mysql.host;
+    const user = config.mysql.user;
+    const password = config.mysql.password;
+    const database = config.mysql.database;
+    const port = config.mysql.port ? Number(config.mysql.port) : 3306;
+
+    logger.info(`⚙️ Conectando ao MySQL em ${host}:${port} (db=${database})...`);
+
     pool = mysql.createPool({
-        host: config.mysql.host,
-        user: config.mysql.user,
-        password: config.mysql.password,
-        database: config.mysql.database,
+        host,
+        port,               // 👈 agora usa a porta do config.ini
+        user,
+        password,
+        database,
         waitForConnections: true,
         connectionLimit: 10
     });
+
     logger.info('✅ Banco MySQL conectado (scraper)!');
     return pool;
 }
