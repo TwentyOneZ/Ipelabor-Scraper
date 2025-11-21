@@ -324,7 +324,7 @@ async function runScraperOnce() {
     const pool = getPool();
     let nomesAtuais = [];
 
-    logger.info('🤖 Scraper iniciado. Checando a cada 3000ms...');
+    logger.info('🤖 Scraper iniciado. Checando a cada 1000ms...');
 
     while (true) {
 
@@ -333,7 +333,7 @@ async function runScraperOnce() {
       } catch (err) {
         // Nenhum card encontrado — seguir rodando SEM recarregar a página
         // logger.debug('⏳ Nenhum card encontrado ainda. Mantendo a página aberta e aguardando...');
-        await new Promise(r => setTimeout(r, 3000)); // espera 500ms e tenta de novo
+        await new Promise(r => setTimeout(r, 1000)); // espera 500ms e tenta de novo
         continue; // volta ao while sem fazer nada
       }
 
@@ -375,7 +375,7 @@ async function runScraperOnce() {
       nomesAtuais = dados;
 
       // Intervalo entre checks
-      await new Promise(r => setTimeout(r, 3000));
+      await new Promise(r => setTimeout(r, 1000));
     }
   } catch (e) {
     // NÃO derruba o processo aqui — só deixa subir pra quem chamou
