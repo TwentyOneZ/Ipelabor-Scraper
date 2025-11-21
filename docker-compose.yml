@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
       TZ: America/Sao_Paulo
-    volumes:
+    # volumes:
       # Se quiser ver logs em arquivo, pode montar assim (ajuste caminhos se necessário)
       # - ./logs:/usr/src/app/scraper/logs
     # Se você quiser depurar via terminal, pode omitir "restart" e rodar sem -d
